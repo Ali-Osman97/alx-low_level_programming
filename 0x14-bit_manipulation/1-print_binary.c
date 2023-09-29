@@ -1,25 +1,26 @@
-#include <stdio.h>
+#include "main.h"
 
-void printBinary(unsigned int num) {
-    int binary[32]; // Assuming a 32-bit integer
-    int i;
+/**
+ * print_binary - prints the binary equivalent of a decimal number
+ * @n: number to print in binary
+ */
+void print_binary(unsigned long int n)
+{
+	int i, num  = 0;
+	unsigned long int current;
 
-    for (i = 0; i < 32; i++) {
-        binary[i] = (num >> i) & 1;
-    }
+	for (i = 63; i >= 0; i--)
+	{
+		current = n >> i;
 
-    printf("Binary representation: ");
-    
-    // Print binary digits in reverse order (from most significant bit to least)
-    for (i = 31; i >= 0; i--) {
-        printf("%d", binary[i]);
-    }
-
-    printf("\n");
-}
-
-int main() {
-    unsigned int number = 98; // Change this to your desired number
-    printBinary(number);
-    return 0;
+		if (current & 1)
+		{
+			_putchar('1');
+			num++;
+		}
+		else if (num)
+			_putchar('0');
+	}
+	if (!num)
+		_putchar('0');
 }
